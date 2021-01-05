@@ -1,0 +1,1383 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
+
+/* variables */
+:root {
+  --bg-gradient: linear-gradient(
+    180deg,
+    rgba(99, 77, 157, 1) 0%,
+    rgba(47, 44, 82, 1) 40%
+  );
+  --bg-gradient-fallback: rgb(47, 44, 82);
+  --bg-navbar: #ef8618;
+  --bg-navbar-active: #d9524b;
+}
+
+
+/* resetting & defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*anti(chus) selectable*/
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* default font settings */
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  color: white;
+}
+
+body {
+  overflow: hidden;
+}
+
+a {
+  color: var(--bg-navbar-active);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+
+/* bug fix for mobile browser vh */
+html {
+  height: -webkit-fill-available;
+  background: var(--bg-gradient-fallback);
+}
+
+
+/* containers */
+.main-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  overflow-y: scroll;
+  background: var(--bg-gradient-fallback);
+  background: var(--bg-gradient);
+}
+
+.generic-planet-container {
+  margin-bottom: -75px;
+}
+
+.container-header {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.container-header .title h1 {
+  font-family: "Audiowide", cursive;
+  font-size: 52px;
+  text-align: center;
+}
+
+.container-header .location {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.container-header .place {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.container-header .place h2 {
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.container-header .place h3 {
+  text-transform: capitalize;
+}
+
+.container-header img {
+  width: 32px;
+  height: 32px;
+  margin-top: 2px;
+}
+
+
+/* planets header */
+.planets-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+  margin-top: -50px;
+  z-index: -1;
+}
+
+.planet {
+  position: absolute;
+  min-width: 200px;
+  margin-top: 20px;
+}
+
+.earth-container .planet,
+.mars-container .planet {
+  margin-top: 40px;
+  min-width: 220px;
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/stars.svg");
+}
+
+.commets {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/commets.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% + 250px) calc(0% - 200px);
+  opacity: 0;
+  animation: move-commets 6s ease-in-out 5s infinite;
+}
+
+
+/* left navigation */
+.fab {
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  width: 62px;
+  height: 62px;
+  transform: rotateZ(0) scale(1) translateX(0);
+  opacity: 0.5;
+  transition: all 1s ease-out;
+}
+.fab.open {
+  transform: rotateZ(-180deg) scale(0.9) translateX(2px);
+  opacity: 1;
+}
+
+.elastic-wave {
+  position: fixed;
+  top: 0;
+  width: 72px;
+  height: 100vh;
+  transform: translateX(-120%);
+  transition: all 0.5s ease-in-out;
+}
+.elastic-wave.open {
+  transform: translateX(0);
+}
+
+.elastic-wave svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 72px;
+  height: 100%;
+  overflow: visible;
+}
+
+.nav-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 82px;
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* fix mobile browser's address bar */
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+.nav-bar.open {
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.nav-bar .nav-list-planets {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-top: 110px;
+  list-style: none;
+  text-align: center;
+}
+
+.nav-bar .nav-list-planets li {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  padding: 8px 2px;
+}
+.nav-bar .nav-list-planets li:last-child {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
+}
+.nav-bar .nav-list-planets li:last-child img {
+  width: 32px;
+}
+.nav-bar .nav-list-planets li#mercury img {
+  width: 40%;
+}
+.nav-bar .nav-list-planets li#venus img {
+  width: 50%;
+}
+.nav-bar .nav-list-planets li#earth img {
+  width: 60%;
+}
+.nav-bar .nav-list-planets li#mars img {
+  width: 50%;
+}
+.nav-bar .nav-list-planets li#jupiter img {
+  width: 90%;
+}
+.nav-bar .nav-list-planets li#saturn img {
+  width: 95%;
+}
+.nav-bar .nav-list-planets li#uranus img {
+  width: 80%;
+}
+.nav-bar .nav-list-planets li#neptune img {
+  width: 60%;
+}
+
+.nav-bar .nav-list-planets li:hover {
+  background-color: var(--bg-navbar-active);
+}
+.nav-bar .nav-list-planets li.active {
+  opacity: 0;
+  transition: all 2s ease-out;
+}
+.nav-bar.open .nav-list-planets li.active {
+  cursor: auto;
+  background-color: var(--bg-navbar-active);
+  opacity: 1;
+}
+
+
+/* small bottom note */
+.note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.note p {
+  max-width: 400px;
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+
+/* Loading Screen */
+.loading-container .planet img {
+  margin-top: 15px;
+  min-width: 200px;
+}
+
+.loading-container .container-header .place h3 {
+  line-height: 1.7rem;
+  font-size: 16px;
+}
+
+.loading-container .output-text {
+  text-align: center;
+}
+
+.planets-loading-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  height: 150px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.planet-bar-container {
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.planet-bar-container img {
+  transition: all 1s;
+}
+
+#mercury-load img {
+  width: 18px;
+}
+#venus-load img {
+  width: 26px;
+}
+#earth-load img {
+  width: 28px;
+}
+#earth-load img,
+#earth-load .vert-bar {
+  transition: all 4s;
+}
+#mars-load img {
+  width: 22px;
+}
+#mars-load img,
+#mars-load .vert-bar {
+  transition: all 5s;
+}
+#jupiter-load img {
+  width: 52px;
+}
+#saturn-load img {
+  width: 52px;
+}
+#uranus-load img {
+  width: 48px;
+}
+#neptune-load img {
+  width: 36px;
+}
+
+.circle-dot {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  width: 9px;
+  height: 9px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.vert-bar-container {
+  position: absolute;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  transform: translateY(5px);
+}
+
+.vert-bar {
+  position: absolute;
+  left: 50%;
+  bottom: -100px;
+  width: 1px;
+  height: 100px;
+  background-color: white;
+  transform-origin: bottom;
+  transform: translateY(0);
+  transition: transform 1s;
+}
+
+.container-last-day {
+  width: 100%;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.mars-grid-last-day {
+  display: grid;
+  grid-template-columns: auto 2px auto;
+  grid-template-rows: repeat(3, 60px);
+  row-gap: 0px;
+  column-gap: 7px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+}
+
+.mars-grid-last-day .grid-line {
+  display: flex;
+  align-self: center;
+  height: 30px;
+  background-color: white;
+}
+
+.mars-grid-last-day .grid-left-col {
+  display: flex;
+  align-self: center;
+  justify-self: right;
+  height: 100%;
+}
+
+.mars-grid-last-day .grid-right-col {
+  display: flex;
+  align-self: center;
+  justify-self: left;
+  height: 100%;
+}
+
+.container-last-day h1 {
+  font-family: "Audiowide", cursive;
+  font-size: 2rem;
+}
+
+.container-last-day h2 {
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.temperature,
+.pressure,
+.wind {
+  display: flex;
+  align-content: center;
+  height: 100%;
+}
+
+.container-last-day .temperature img {
+  width: 21px;
+  height: 46px;
+  margin-right: 0.1rem;
+  align-self: center;
+}
+
+.container-last-day .pressure img {
+  width: 38px;
+  height: 38px;
+  margin-right: 0.5rem;
+  align-self: center;
+}
+
+.container-last-day .wind img {
+  width: 60px;
+  height: 42px;
+  margin-right: 0.5rem;
+  align-self: center;
+}
+
+.container-last-day .max-min {
+  text-align: right;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+  align-self: center;
+}
+
+.container-last-day .max-min-values {
+  text-align: left;
+  line-height: 1.3rem;
+  align-self: center;
+}
+
+.container-last-day .max-min-values span {
+  font-size: 0.8rem;
+}
+
+.container-last-day .max-min-values h3 {
+  font-size: 22px;
+}
+
+.container-last-day .max-min-values h4 {
+  font-size: 18px;
+}
+
+.container-last-day .wind .wind-direction {
+  cursor: pointer;
+  margin-left: 10px;
+  align-self: center;
+}
+
+.container-last-day .wind .wind-direction h3 {
+  font-size: 1.5rem;
+}
+
+.container-last-day .wind .wind-direction h4 {
+  font-size: 0.8rem;
+}
+
+/* adaptation for earth planet*/
+.earth-container .mars-grid-last-day {
+  margin-left: -50px;
+}
+.earth-container .place h2 {
+  text-transform: capitalize;
+}
+
+.container-forecast {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0 12px;
+  perspective: 400px;
+}
+
+/* adaptation for earth planet */
+.earth-container .container-forecast {
+  transform: translateX(-15px);
+}
+
+.container-forecast .day {
+  width: 135px;
+  height: 225px;
+  border-radius: 12px;
+  margin: 0 5px;
+  transform: translateX(10px);
+}
+
+.earth-container .container-forecast .day {
+  height: 170px;
+  margin-bottom: -25px;
+}
+
+.day .temperature,
+.day .pressure,
+.day .wind {
+  height: auto;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.earth-container .day .temperature {
+  margin: 18px 0;
+}
+
+.earth-container .container-forecast .day .max-min-values::before {
+  display: none;
+}
+
+.earth-container .container-forecast .day .temperature img {
+  transform: translateX(-5px);
+  margin-right: 3px;
+}
+
+.container-forecast .day .max-min-values h3 {
+  font-size: 1.8rem;
+  line-height: 1rem;
+}
+
+.container-forecast .day .max-min-values h4 {
+  font-size: 1.4rem;
+}
+
+.container-forecast .day .max-min-values span {
+  font-size: 1rem;
+}
+
+.container-forecast .temperature img {
+  width: 16px;
+  height: 37px;
+  transform: translateX(-10px);
+}
+
+.container-forecast .pressure img {
+  width: 26px;
+  height: 26px;
+  margin-right: 0.5rem;
+}
+
+.container-forecast .wind {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.container-forecast .wind img {
+  width: 46px;
+  height: 46px;
+  margin-right: 0.5rem;
+  margin-top: -15px;
+}
+
+.container-forecast .wind h4 {
+  text-align: center;
+}
+
+.container-forecast .compass {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-items: center;
+  text-align: center;
+  line-height: 26px;
+}
+
+.container-forecast .compass img {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 10px;
+}
+
+.container-forecast .sol {
+  margin-top: 15px;
+  font-family: "Audiowide", cursive;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.front,
+.back {
+  position: absolute;
+  backface-visibility: hidden;
+  width: 135px;
+  height: 225px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: transform 0.5s;
+}
+
+/* earth adaptation */
+.earth-container .front {
+  height: 170px;
+}
+
+.rotate {
+  transform: rotateY(180deg);
+}
+
+.moons {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.earth-container .moons {
+  margin-top: 22px;
+}
+
+.moons .phobos {
+  width: 38px;
+  margin-right: 5px;
+}
+
+.moons .deimos {
+  width: 26px;
+  height: 26px;
+  margin-left: 5px;
+  align-self: center;
+}
+
+/* earth adaptation */
+.earth-container .moons {
+  transform: translateY(-15px);
+}
+
+
+@keyframes move-commets {
+  0% {
+    background-position: calc(100% + 250px) calc(0% - 200px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    background-position: calc(0% - 200px) calc(100% + 200px);
+    opacity: 0;
+  }
+  100% {
+    background-position: calc(0% - 200px) calc(100% + 200px);
+    opacity: 0;
+  }
+}
+
+
+/* Modal for Wind Compass */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.modal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+#modal .modal-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 450px;
+  padding-top: 25px;
+  border-radius: 16px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+
+#modal .modal-content h1 {
+  color: var(--bg-navbar-active);
+}
+
+#modal .modal-content img {
+  width: 70%;
+}
+
+#modal.open {
+  display: block;
+}
+
+.wind-graph {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+
+/* nav bar planets hover tooltips */
+.tooltip-planets {
+  position: relative;
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.nav-list-planets li span {
+  position: absolute;
+  left: 100%;
+  top: 20%;
+}
+
+.tooltip-planets::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 100%;
+  margin-left: 15px;
+  padding: 10px;
+  border-radius: 7px;
+  font-family: "Baloo 2", sans-serif;
+  background-color: var(--bg-navbar-active);
+}
+
+.tooltip-planets::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  margin-left: -4px;
+  border: 10px solid;
+  border-color: transparent var(--bg-navbar-active) transparent transparent;
+  transform: translateY(50%);
+}
+
+.nav-bar .nav-list-planets li:hover .tooltip-planets {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+
+/* planets without weather station */
+.generic-planet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-card {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 15px;
+  margin: 15px 0 60px;
+}
+
+.generic-planet-container .grid-card > section {
+  padding: 10px 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.surface-gravity {
+  grid-column: 1/2;
+  border-radius: 12px 0px 0px 12px;
+}
+
+.body-weight {
+  grid-column: 2/3;
+  border-radius: 0px 12px 12px 0px;
+}
+
+.distance-sun {
+  grid-column: 1/3;
+  border-radius: 12px;
+}
+
+.day-duration {
+  grid-column: 1/2;
+  border-radius: 12px 0px 0px 12px;
+}
+
+.year-duration {
+  grid-column: 2/3;
+  border-radius: 0px 12px 12px 0px;
+}
+
+.travel-time {
+  grid-column: 1/3;
+  border-radius: 12px;
+}
+
+.generic-planet-container .text-large {
+  font-size: 48px;
+}
+
+.generic-planet-container .text-small {
+  font-size: 18px;
+}
+
+.generic-planet-container .unit {
+  font-size: 16px;
+}
+
+.generic-planet-container .temperature {
+  margin-top: -35px;
+}
+
+.generic-planet-container .temperature img {
+  height: 70px;
+  margin-right: 12px;
+  margin-top: 7px;;
+}
+
+.generic-planet-container .temperature .avtemp {
+  margin-top: 12px;
+  font-size: 48px;
+  line-height: 38px;
+}
+
+.generic-planet-container .temperature .avtemp span {
+  font-size: 28px;
+}
+
+.generic-planet-container .temperature .avtext {
+  font-size: 16px;
+  text-align: left;
+}
+
+
+/* utilities */
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+
+/* messages */
+#text-title {
+  font-size: 26px;
+}
+
+#text-info {
+  font-size: 16px;
+}
+
+.error {
+  background: tomato !important;
+}
+
+.warning {
+  background: orange !important;
+}
+
+.ok {
+  background: yellowgreen !important;
+}
+
+
+/* Preferences Screen */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile {
+  margin-bottom: 50px;
+}
+
+.profile img {
+  display: block;
+  width: 150px;
+  margin: 15px auto;
+}
+
+.input {
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid whitesmoke;
+  color: whitesmoke;
+  font-family: "Baloo 2", sans-serif;
+}
+
+.profile-name {
+  width: 200px;
+  height: 38px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.units {
+  display: block;
+  position: relative;
+  margin-top: -12px;
+  margin-bottom: 30px;
+  padding-left: 35px;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 22px;
+  color: white;
+}
+
+.units input {
+  display: none;
+}
+.units label input:checked ~ .radial-check:after {
+  display: block;
+}
+
+.units label {
+  cursor: pointer;
+  display: block;
+}
+
+.radial-check {
+  position: absolute;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border: 2px solid white;
+  border-radius: 25px;
+  background-color: none;
+  transform: translateY(3px);
+}
+
+input:checked ~ .radial-check {
+  border: 3px solid var(--bg-navbar-active);
+}
+
+.units label:hover .radial-check {
+  border-color: var(--bg-navbar-active);
+}
+
+.radial-check:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 5px;
+  left: 5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--bg-navbar);
+}
+
+.earth-weight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-size: 22px;
+}
+
+.weight-container input {
+  font-size: 28px;
+  width: 90px;
+  height: 38px;
+  padding-right: 6px;
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid whitesmoke;
+  font-family: "Baloo 2", sans-serif;
+  text-align: right;
+}
+
+.weight-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.weight-container h2 {
+  font-size: 26px;
+}
+
+.earth-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 22px;
+}
+
+.earth-container input {
+  width: 250px;
+  height: 38px;
+  padding-right: 6px;
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid whitesmoke;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 28px;
+  text-align: center;
+}
+
+button.save {
+  cursor: pointer;
+  padding: 20px 40px;
+  color: white;
+  font-size: 16px;
+  border-radius: 30px;
+  background: linear-gradient(
+    to right,
+    var(--bg-navbar-active),
+    var(--bg-navbar),
+    var(--bg-navbar-active)
+  );
+  background-size: 200%;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s;
+}
+
+button.save:hover {
+  background-position: right;
+}
+
+button.green {
+  background: linear-gradient(
+    to right,
+    var(--bg-navbar-active),
+    yellowgreen,
+    var(--bg-navbar-active)
+  );
+
+  background-size: 200%;
+}
+
+
+/* attributions */
+.attributions {
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.attributions h2 {
+  align-self: center;
+  font-weight: 400;
+}
+
+.attributions h3 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+.attributions p {
+  margin-bottom: 10px;
+}
+
+.note {
+  margin-top: 25px;
+  margin-bottom: 100px;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+}
+
+.notification {
+  position: absolute;
+  overflow: hidden;
+  width: 300px;
+  height: 80px;
+  left: 50%;
+  bottom: 0;
+  border-radius: 12px 12px 0 0;
+  background-color: var(--bg-navbar);
+  transform: translate(-50%, 500px);
+  opacity: 0.9;
+}
+
+.notification h1 {
+  padding: 5px 2px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.notification p {
+  padding: 0 7px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
+  color: black;
+}
+
+.animate-notification {
+  animation: notification 4s;
+}
+
+@keyframes notification {
+  0% {
+    left: 50%;
+    transform: translate(-50%, 500px);
+    opacity: 0;
+  }
+  25% {
+    left: 50%;
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  75% {
+    left: 50%;
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  100% {
+    left: 50%;
+    transform: translate(-50%, 500px);
+    opacity: 0;
+  }
+}
+
+
+/* mobile screens mid */
+@media screen and (max-width: 767px) {
+  .planet {
+    display: flex;
+    justify-content: center;
+  }
+
+  .planet img {
+    width: 50px;
+  }
+
+  .generic-planet-container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .generic-planet-container .grid-card {
+    gap: 10px;
+  }
+
+  .generic-planet-container .grid-card section {
+    padding: 10px;
+  }
+
+  .earth-container .planet img,
+  .mars-container .planet img {
+    margin-top: -65px;
+    width: 150px;
+  }
+
+  .container-header {
+    margin-top: 0;
+  }
+
+  .container-header img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fab {
+    width: 62px;
+    height: 62px;
+    left: 9px;
+    padding: 0px;
+    transform: rotateZ(0) scale(1) translateX(0);
+    opacity: 0.5;
+  }
+
+  .fab.open {
+    top: 12px;
+    transform: rotateZ(-180deg) scale(0.8) translate(10px, 12px);
+    opacity: 1;
+  }
+
+  .elastic-wave.open {
+    transform: translateX(-15px);
+  }
+
+  .nav-bar {
+    width: 66px;
+  }
+
+  .nav-bar .nav-list-planets {
+    padding-top: 80px;
+  }
+
+  .container-header .title {
+    font-size: 38px;
+  }
+
+  .container-header .place {
+    line-height: 0.7rem;
+    line-height: 1rem;
+  }
+
+  .container-last-day {
+    width: 100%;
+    margin-top: -60px;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+
+  .temperature,
+  .pressure,
+  .wind {
+    padding: 0.5rem;
+  }
+
+  .container-last-day .wind {
+    margin-bottom: 1rem;
+  }
+
+  .container-forecast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 5px;
+  }
+  
+  .earth-container .container-forecast {
+    transform: translateX(0px);
+  }
+
+  .container-forecast .day {
+    width: 120px;
+    height: 200px;
+    margin: 0 5px;
+    border-radius: 20px;
+    transform: translateX(0px);
+  }
+
+  .front,
+  .back {
+    width: 110px;
+    height: 200px;
+  }
+
+  .container-forecast .sol {
+    font-size: 1.2rem;
+    margin: 14px 0 7px 0;
+  }
+  
+  .earth-container .sol {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .day .temperature,
+  .day .pressure {
+    margin-top: 0;
+    margin-bottom: 2px;
+  }
+
+  .day .wind {
+    margin-top: 12px;
+  }
+
+  .day .compass {
+    margin-top: -10px;
+    margin-bottom: 12px;
+  }
+
+  .container-forecast .day .max-min-values h3 {
+    font-size: 1.6rem;
+    line-height: 0.8rem;
+  }
+
+  .container-forecast .day .max-min-values span {
+    font-size: 0.8rem;
+  }
+
+  .container-forecast .pressure img {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.2rem;
+  }
+
+  .container-forecast .compass img {
+    width: 32px;
+    height: 32px;
+    margin-right: 3px;
+    transform: translateY(-3px);
+  }
+
+  .moons {
+    transform: scale(0.8);
+  }
+
+  .earth-container .moons {
+    margin-top: -2px;
+  }
+
+  .planets-loading-container {
+    max-width: 100%;
+  }
+
+}
+
+/* mobile screens small */
+@media screen and (max-width: 400px) {
+  .fab img {
+    width: 45px;
+  }
+
+  .fab.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: 1;
+  }
+
+  .container-header .title h1 {
+    font-size: 44px;
+  }
+
+  .generic-planet-container .grid-card {
+    margin-bottom: -10px;
+  }
+
+  .note {
+    max-width: 400px;
+  }
+
+  /* fix for prefs button */
+  .nav-bar .nav-list-planets {
+    padding-top: 70px;
+  }
+  
+}
