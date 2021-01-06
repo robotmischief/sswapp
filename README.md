@@ -2,7 +2,7 @@
 ### **S**olar **S**ystem **W**eather **A**pp
 A Weather Forecast for the Space Traveler
 
-![sswapp loading](images\readme\loading.png)
+![sswapp loading](images/readme/loading.png)
 
 ---
 ## Mars Weather
@@ -14,13 +14,13 @@ This App shows weather data for the latest 4 Sols (Martian days) *with available
 
 The InSight Mars Mission data is provided by the NASA Jet Propulsion Laboratory and Cornell University API.
 
-![mars screen](images\readme\mars.png) 
+![mars screen](images/readme/mars.png) 
 
 ---
 ## Earth Weather
 Earth weather forecast data thanks to Open Weather API. Go and check them out at [Open Weather Map](https://www.openweathermap.org)
 
-![earth screen](images\readme\earth.png)
+![earth screen](images/readme/earth.png)
 
 ### :point_up_2: Changing Earth location
 Click the preference button to select a different place to get its weather.
@@ -33,13 +33,13 @@ On this screen you can change:
 * Your weight on Earth (used to calculate it on other planets)
 * Place to get the weather
 
-![preferences screen](images\readme\preferences.png)
+![preferences screen](images/readme/preferences.png)
 
 ---
 ## Planetary Data</h3>
 Planetary information thanks to NASA’s Solar System Website: go and check it out to learn tons of cool stuff about our [solar system](https://solarsystem.nasa.gov/planets/overview/#otp_planet_lineup)
 
-![planet screen](images\readme\planets.png)
+![planet screen](images/readme/planets.png)
 
 ---
 ## Web Service Rate Limits
