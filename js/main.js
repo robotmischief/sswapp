@@ -256,8 +256,7 @@ function getMarsWeatherCheck(){
 */
 function updateMarsWeather() {
   //TODO: workaround for not exposing API key... maybe express endpoint?
-  const apiKey = 'DEMO_KEY';//for debug
-    const urlMarsWeather = `'https://api.nasa.gov/insight_weather/?api_key=${apiKey}&feedtype=json&ver=1.0'`;
+    const urlMarsWeather = "https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0";
     fetch(urlMarsWeather)
     .then(response =>{
       if(!response.ok) {
