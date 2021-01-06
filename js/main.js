@@ -256,7 +256,9 @@ function getMarsWeatherCheck(){
 */
 function updateMarsWeather() {
   //TODO: workaround for not exposing API key... maybe express endpoint?
-    const urlMarsWeather = 'https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0';
+  // const apiKey = '3dxs6McZe6JX3ois2NzQZT9uzsJfeFoeznwzsYnY';
+  const apiKey = 'DEMO_KEY';//for debug
+    const urlMarsWeather = `'https://api.nasa.gov/insight_weather/?api_key=${apiKey}&feedtype=json&ver=1.0'`;
     fetch(urlMarsWeather)
     .then(response =>{
       if(!response.ok) {
@@ -1137,15 +1139,12 @@ function notification(title, text, type) {
 }
 
 
-// returns name of moon phase for a date
-// name used to match the name of the img to show
-// algorithm not super accurate
 /*
 * @description Returns the name of the Earth's Moon phase
 * @param {date} date - Date to search corresponding phase
 * @returns {string}
 */
-//TODO: simple algorithm... try a precise one
+//TODO: simple algorithm... try a little more precise one
 function moonPhase(date) {
   //phase range without decimals and shifted a little from reality to better show full and new moon more than one day
   const phases = [

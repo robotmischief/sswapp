@@ -1181,7 +1181,7 @@ button.green {
   }
 
   .generic-planet-container {
-    margin: 0;
+    margin-bottom: -60px;
     padding: 0;
   }
 
@@ -1365,14 +1365,6 @@ button.green {
 
   .container-header .title h1 {
     font-size: 44px;
-  }
-
-  .generic-planet-container .grid-card {
-    margin-bottom: -10px;
-  }
-
-  .note {
-    max-width: 400px;
   }
 
   /* fix for prefs button */
