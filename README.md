@@ -10,7 +10,7 @@ NASA’s InSight Mars lander takes continuous weather measurements (temperature,
 
 To learn much more about this cool mission check [this link](https://mars.nasa.gov/insight/timeline/overview/)
 
-This App shows weather data for the latest 4 Sols (Martian days) *with available temperature data*. Since data travels from Mars to Earth (!) sometimes it is incomplete or unavailable. When more data from a particular Sol is downlinked (sometimes several days later), these values are recalculated and get updated.
+This App shows weather data for the latest 4 Sols (Martian days) *with available temperature data*. Since data travels from Mars to Earth sometimes it is incomplete or unavailable. When more data from a particular Sol is downlinked (sometimes several days later), these values are recalculated and get updated.
 
 The InSight Mars Mission data is provided by the NASA Jet Propulsion Laboratory and Cornell University API.
 
