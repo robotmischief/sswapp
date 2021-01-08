@@ -481,7 +481,7 @@ function updateMarsWeather() {
 * @description Draws a wind-rose/compass of a given Sol using Plotly library
 * @param {object} data - Wind data to plot
 * @param {string} solNumber - Martian day that corresponds to wind data
-* based on Gemma Anible script example
+* based on Gemma Anible && Brian Carcich script example
 */
 function windGraph (data, solNumber) {
  document.getElementById('sol-wd').innerHTML = `for Sol ${solNumber}`;
