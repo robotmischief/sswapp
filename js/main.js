@@ -703,7 +703,7 @@ function deployEarthUIwithData(){
   document.querySelector('.earth-container .location h2').innerHTML = localStorage.place;
   document.querySelector('.earth-container .location h3').innerHTML = `Lat: ${location.lat} Lon: ${location.lon}`;
   document.querySelector('.earth-container .container-last-day h1').innerHTML = getStringDay(today);
-  document.querySelector('.earth-container .container-last-day h2').innerHTML = `${getStringMonth(today)}, ${today.getDate()} ${today.getFullYear()}` ;
+  document.querySelector('.earth-container .container-last-day h2').innerHTML = `${getStringMonth(today)} ${today.getDate()}, ${today.getFullYear()}` ;
   //temperature
   document.getElementById('temp-today-mx').innerHTML = 
   (metric)

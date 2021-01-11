@@ -13,7 +13,6 @@
   --bg-navbar-active: #d9524b;
 }
 
-
 /* resetting & defaults */
 * {
   margin: 0;
@@ -43,13 +42,11 @@ a {
   text-decoration: none;
 }
 
-
 /* bug fix for mobile browser vh */
 html {
   height: -webkit-fill-available;
   background: var(--bg-gradient-fallback);
 }
-
 
 /* containers */
 .main-container {
@@ -105,7 +102,6 @@ html {
   margin-top: 2px;
 }
 
-
 /* planets header */
 .planets-header {
   position: relative;
@@ -147,7 +143,6 @@ html {
   opacity: 0;
   animation: move-commets 6s ease-in-out 5s infinite;
 }
-
 
 /* left navigation */
 .fab {
@@ -266,7 +261,6 @@ html {
   opacity: 1;
 }
 
-
 /* small bottom note */
 .note {
   display: flex;
@@ -280,7 +274,6 @@ html {
   padding: 0 20px;
   text-align: center;
 }
-
 
 /* Loading Screen */
 .loading-container .planet img {
@@ -533,6 +526,10 @@ html {
   margin-bottom: -25px;
 }
 
+.earth-container .day section {
+  font-size: 18px;
+}
+
 .day .temperature,
 .day .pressure,
 .day .wind {
@@ -555,16 +552,16 @@ html {
 }
 
 .container-forecast .day .max-min-values h3 {
-  font-size: 1.8rem;
-  line-height: 1rem;
+  font-size: 29px;
+  line-height: 16px;
 }
 
 .container-forecast .day .max-min-values h4 {
-  font-size: 1.4rem;
+  font-size: 22px;
 }
 
 .container-forecast .day .max-min-values span {
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .container-forecast .temperature img {
@@ -576,7 +573,7 @@ html {
 .container-forecast .pressure img {
   width: 26px;
   height: 26px;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 }
 
 .container-forecast .wind {
@@ -589,7 +586,7 @@ html {
 .container-forecast .wind img {
   width: 46px;
   height: 46px;
-  margin-right: 0.5rem;
+  margin-right: 8px;
   margin-top: -15px;
 }
 
@@ -667,7 +664,6 @@ html {
   transform: translateY(-15px);
 }
 
-
 @keyframes move-commets {
   0% {
     background-position: calc(100% + 250px) calc(0% - 200px);
@@ -685,7 +681,6 @@ html {
     opacity: 0;
   }
 }
-
 
 /* Modal for Wind Compass */
 .center {
@@ -741,7 +736,6 @@ html {
   margin-bottom: 20px;
 }
 
-
 /* nav bar planets hover tooltips */
 .tooltip-planets {
   position: relative;
@@ -781,7 +775,6 @@ html {
   transform: translateX(0);
   opacity: 1;
 }
-
 
 /* planets without weather station */
 .generic-planet-container {
@@ -852,7 +845,7 @@ html {
 .generic-planet-container .temperature img {
   height: 70px;
   margin-right: 12px;
-  margin-top: 7px;;
+  margin-top: 7px;
 }
 
 .generic-planet-container .temperature .avtemp {
@@ -870,7 +863,6 @@ html {
   text-align: left;
 }
 
-
 /* utilities */
 .hide {
   display: none;
@@ -879,7 +871,6 @@ html {
 .show {
   display: block;
 }
-
 
 /* messages */
 #text-title {
@@ -901,7 +892,6 @@ html {
 .ok {
   background: yellowgreen !important;
 }
-
 
 /* Preferences Screen */
 form {
@@ -1078,7 +1068,6 @@ button.green {
   background-size: 200%;
 }
 
-
 /* attributions */
 .attributions {
   display: flex;
@@ -1167,7 +1156,6 @@ button.green {
     opacity: 0;
   }
 }
-
 
 /* mobile screens mid */
 @media screen and (max-width: 767px) {
@@ -1269,7 +1257,7 @@ button.green {
     margin: 0 auto;
     padding: 0 5px;
   }
-  
+
   .earth-container .container-forecast {
     transform: translateX(0px);
   }
@@ -1292,7 +1280,7 @@ button.green {
     font-size: 1.2rem;
     margin: 14px 0 7px 0;
   }
-  
+
   .earth-container .sol {
     margin-top: 18px;
     font-size: 14px;
@@ -1346,7 +1334,6 @@ button.green {
   .planets-loading-container {
     max-width: 100%;
   }
-
 }
 
 /* mobile screens small */
@@ -1371,5 +1358,4 @@ button.green {
   .nav-bar .nav-list-planets {
     padding-top: 70px;
   }
-  
 }
