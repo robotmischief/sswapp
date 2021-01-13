@@ -76,6 +76,7 @@ function preferencesStorageInit(){
         localStorage.place = 'Space Coast, FL';
         localStorage.location = JSON.stringify({"lat":28.75 , "lon":-82.5});
     }
+    // localStorage.removeItem('marsweatherdata'); //bug test
     if(!localStorage.marsweatherdata) {
         getDefaultData('marsweatherdata');
     }
@@ -239,7 +240,7 @@ function getMarsWeatherCheck(){
   const today = new Date();
   const latestCheck = new Date(localStorage.latestMarsCheck);
   const updateInterval = (today.getTime() - latestCheck.getTime()) / (1000 * 3600 * 24);
-  //  const updateInterval = 2.5; // force interval for debugging
+  //  const updateInterval = 0.5; // force interval for debugging
   if ( updateInterval > 1 ) {
     //time to check for new InSight mission weather data
     updateMarsWeather();
@@ -328,8 +329,8 @@ function updateMarsWeather() {
    //Sol 1 data (latest day)
    //season
    const season = marsDataToDeploy[sol_1].Season;
-   document.getElementById('season').innerHTML = season;
-   const dateSol_1 = new Date(marsDataToDeploy[sol_1].First_UTC);
+   document.getElementById('season').innerHTML = season; //TODO is it possible the API dont provide this?
+   const dateSol_1 = new Date(marsDataToDeploy[sol_1].First_UTC);  //TODO is it possible the API dont provide this?
    //formated date
    const day = dateSol_1.getDate();
    const month = getStringMonth(dateSol_1);
@@ -337,8 +338,8 @@ function updateMarsWeather() {
    const formatedDate = `${month} ${day}, ${year}`;
    document.getElementById('date').innerHTML = formatedDate;
    //surface temperature
-   const highSol_1 = Math.round(marsDataToDeploy[sol_1].AT.mx);
-   const lowSol_1 = Math.round(marsDataToDeploy[sol_1].AT.mn);
+   const highSol_1 = Math.round(marsDataToDeploy[sol_1].AT.mx); //TEMP is always available because of previous check
+   const lowSol_1 = Math.round(marsDataToDeploy[sol_1].AT.mn); //TEMP is always available because of previous check
    document.getElementById('at-high-sol1').innerHTML = 
    (metric)
    ? `${Math.round(highSol_1)}<span>C</span>`
@@ -348,28 +349,46 @@ function updateMarsWeather() {
    ? `${Math.round(lowSol_1)}<span>C</span>`
    : `${Math.round((lowSol_1 * 1.8) + 32)}<span>F</span>`
    //surface preasure
-   const maxPRSol_1 = Math.round(marsDataToDeploy[sol_1].PRE.mx);
-   const minPRSol_1 = Math.round(marsDataToDeploy[sol_1].PRE.mn);
-   document.getElementById('pr-max-sol1').innerHTML = `${maxPRSol_1}<span>Pa</span>`;
-   document.getElementById('pr-min-sol1').innerHTML = `${minPRSol_1}<span>Pa</span>`;
+   const maxPRSol_1 = (marsDataToDeploy[sol_1].PRE) ? Math.round(marsDataToDeploy[sol_1].PRE.mx) : 'N/A';
+   const minPRSol_1 = (marsDataToDeploy[sol_1].PRE) ? Math.round(marsDataToDeploy[sol_1].PRE.mn) : 'N/A';
+   if(typeof(maxPRSol_1) === 'number') {
+     document.getElementById('pr-max-sol1').innerHTML = `${maxPRSol_1}<span>Pa</span>`;
+    } else {
+     document.getElementById('pr-max-sol1').innerHTML = maxPRSol_1;
+   }
+   if(typeof(minPRSol_1) === 'number') {
+     document.getElementById('pr-min-sol1').innerHTML = `${minPRSol_1}<span>Pa</span>`;
+    } else {
+     document.getElementById('pr-min-sol1').innerHTML = minPRSol_1;
+   }
    //horizontal wind
-   const maxHWSol_1 = Math.round(marsDataToDeploy[sol_1].HWS.mx);
-   const minHWSol_1 = Math.round(marsDataToDeploy[sol_1].HWS.mn);
-   document.getElementById('hw-max-sol1').innerHTML = 
-   (metric)
-   ? `${Math.round(maxHWSol_1)}<span>m/s</span>`
-   : `${Math.round((maxHWSol_1 * 2.37) + 32)}<span>mph</span>`;
-   document.getElementById('hw-min-sol1').innerHTML = 
-   (metric)
-   ? `${Math.round(minHWSol_1)}<span>m/s</span>`
-   : `${Math.round((minHWSol_1 * 2.37) + 32)}<span>mph</span>`
+   const maxHWSol_1 = (marsDataToDeploy[sol_1].HWS) ? Math.round(marsDataToDeploy[sol_1].HWS.mx) : 'N/A';
+   const minHWSol_1 = (marsDataToDeploy[sol_1].HWS) ? Math.round(marsDataToDeploy[sol_1].HWS.mn) : 'N/A';
+   if (typeof(maxHWSol_1) === 'number'){
+    document.getElementById('hw-max-sol1').innerHTML = 
+    (metric)
+    ? `${Math.round(maxHWSol_1)}<span>m/s</span>`
+    : `${Math.round((maxHWSol_1 * 2.37) + 32)}<span>mph</span>`;
+   } else {
+    document.getElementById('hw-max-sol1').innerHTML = maxHWSol_1;
+   }
+   if (typeof(minHWSol_1) === 'number'){
+    document.getElementById('hw-min-sol1').innerHTML = 
+    (metric)
+    ? `${Math.round(minHWSol_1)}<span>m/s</span>`
+    : `${Math.round((minHWSol_1 * 2.37) + 32)}<span>mph</span>`
+   }else{
+    document.getElementById('hw-min-sol1').innerHTML = minHWSol_1;
+   }
    //wind direction
-   const directionWDSol_1 = marsDataToDeploy[sol_1].WD.most_common.compass_point;
+   const directionWDSol_1 = (marsDataToDeploy[sol_1].WD.most_common) ? marsDataToDeploy[sol_1].WD.most_common.compass_point : 'N/A';
    document.getElementById('wd-sol1').innerHTML = directionWDSol_1;
+
+
    //Sol 2 flipping card
     //surface temperature
-    const highSol_2 = Math.round(marsDataToDeploy[sol_2].AT.mx);
-    const lowSol_2 = Math.round(marsDataToDeploy[sol_2].AT.mn);
+    const highSol_2 = Math.round(marsDataToDeploy[sol_2].AT.mx); //TEMP is always available because of previous check
+    const lowSol_2 = Math.round(marsDataToDeploy[sol_2].AT.mn); //TEMP is always available because of previous check
     document.getElementById('at-high-sol2').innerHTML = 
     (metric)
     ? `${Math.round(highSol_2)}<span>C</span>`
@@ -379,28 +398,45 @@ function updateMarsWeather() {
     ? `${Math.round(lowSol_2)}<span>C</span>`
     : `${Math.round((lowSol_2 * 1.8) + 32)}<span>F</span>`
     //surface preasure
-    const maxPRSol_2 = Math.round(marsDataToDeploy[sol_2].PRE.mx);
-    const minPRSol_2 = Math.round(marsDataToDeploy[sol_2].PRE.mn);
-    document.getElementById('pr-max-sol2').innerHTML = `${Math.round(maxPRSol_2)}<span>Pa</span>`;
-    document.getElementById('pr-min-sol2').innerHTML = `${Math.round(minPRSol_2)}<span>Pa</span>`;
+    const maxPRSol_2 = (marsDataToDeploy[sol_2].PRE) ? Math.round(marsDataToDeploy[sol_2].PRE.mx) : 'N/A';
+    const minPRSol_2 = (marsDataToDeploy[sol_2].PRE) ? Math.round(marsDataToDeploy[sol_2].PRE.mn) : 'N/A';
+    if (typeof(maxPRSol_2) === 'number') {
+      document.getElementById('pr-max-sol2').innerHTML = `${Math.round(maxPRSol_2)}<span>Pa</span>`;
+    } else{
+      document.getElementById('pr-max-sol2').innerHTML = maxPRSol_2;
+    }
+    if (typeof(minPRSol_2) === 'number') {
+      document.getElementById('pr-min-sol2').innerHTML = `${Math.round(minPRSol_2)}<span>Pa</span>`;
+    } else {
+      document.getElementById('pr-min-sol2').innerHTML = minPRSol_2;
+    }
     //horizontal wind
-    const maxHWSol_2 = Math.round(marsDataToDeploy[sol_2].HWS.mx);
-    const minHWSol_2 = Math.round(marsDataToDeploy[sol_2].HWS.mn);
-    document.getElementById('hw-max-sol2').innerHTML = 
-    (metric)
-    ? `${Math.round(maxHWSol_2)}<span>m/s</span>`
-    : `${Math.round((maxHWSol_2 * 2.37) + 32)}<span>mph</span>`;
-    document.getElementById('hw-min-sol2').innerHTML = 
-    (metric)
-    ? `${Math.round(minHWSol_2)}<span>m/s</span>`
-    : `${Math.round((minHWSol_2 * 2.37) + 32)}<span>mph</span>`
+    const maxHWSol_2 = (marsDataToDeploy[sol_2].HWS) ? Math.round(marsDataToDeploy[sol_2].HWS.mx) : 'N/A';
+    const minHWSol_2 = (marsDataToDeploy[sol_2].HWS) ? Math.round(marsDataToDeploy[sol_2].HWS.mn) : 'N/A';
+    if (typeof(maxHWSol_2) === 'number'){
+      document.getElementById('hw-max-sol2').innerHTML = 
+      (metric)
+      ? `${Math.round(maxHWSol_2)}<span>m/s</span>`
+      : `${Math.round((maxHWSol_2 * 2.37) + 32)}<span>mph</span>`;
+    } else {
+      document.getElementById('hw-max-sol2').innerHTML = maxHWSol_2;
+    }
+    if (typeof(minHWSol_2) === 'number'){
+      document.getElementById('hw-min-sol2').innerHTML = 
+      (metric)
+      ? `${Math.round(minHWSol_2)}<span>m/s</span>`
+      : `${Math.round((minHWSol_2 * 2.37) + 32)}<span>mph</span>`
+    } else {
+      document.getElementById('hw-min-sol2').innerHTML = minHWSol_2;
+    }
     //wind direction
-    const directionWDSol_2 = marsDataToDeploy[sol_2].WD.most_common.compass_point;
+    const directionWDSol_2 = (marsDataToDeploy[sol_2].WD.most_common) ? marsDataToDeploy[sol_2].WD.most_common.compass_point : 'N/A';
     document.getElementById('wd-sol2').innerHTML = directionWDSol_2;
+
     //Sol 3 flipping card
     //surface temperature
-    const highSol_3 = Math.round(marsDataToDeploy[sol_3].AT.mx);
-    const lowSol_3 = Math.round(marsDataToDeploy[sol_3].AT.mn);
+    const highSol_3 = Math.round(marsDataToDeploy[sol_3].AT.mx); //TEMP is always available because of previous check
+    const lowSol_3 = Math.round(marsDataToDeploy[sol_3].AT.mn); //TEMP is always available because of previous check
     document.getElementById('at-high-sol3').innerHTML = 
     (metric)
     ? `${Math.round(highSol_3)}<span>C</span>`
@@ -410,28 +446,46 @@ function updateMarsWeather() {
     ? `${Math.round(lowSol_3)}<span>C</span>`
     : `${Math.round((lowSol_3 * 1.8) + 32)}<span>F</span>`
     //surface preasure
-    const maxPRSol_3 = Math.round(marsDataToDeploy[sol_3].PRE.mx);
-    const minPRSol_3 = Math.round(marsDataToDeploy[sol_3].PRE.mn);
-    document.getElementById('pr-max-sol3').innerHTML = `${Math.round(maxPRSol_3)}<span>Pa</span>`;
-    document.getElementById('pr-min-sol3').innerHTML = `${Math.round(minPRSol_3)}<span>Pa</span>`;
+    const maxPRSol_3 = (marsDataToDeploy[sol_3].PRE) ? Math.round(marsDataToDeploy[sol_3].PRE.mx) : 'N/A';
+    const minPRSol_3 = (marsDataToDeploy[sol_3].PRE) ? Math.round(marsDataToDeploy[sol_3].PRE.mn) : 'N/A';
+    if(typeof(maxPRSol_3) === 'number') {
+      document.getElementById('pr-max-sol3').innerHTML = `${Math.round(maxPRSol_3)}<span>Pa</span>`;
+    } else {
+      document.getElementById('pr-max-sol3').innerHTML = maxPRSol_3;
+    }
+    if (typeof(minPRSol_3) === 'number') {
+      document.getElementById('pr-min-sol3').innerHTML = `${Math.round(minPRSol_3)}<span>Pa</span>`;
+    } else {
+      document.getElementById('pr-min-sol3').innerHTML = minPRSol_3;
+    }
     //horizontal wind
-    const maxHWSol_3 = Math.round(marsDataToDeploy[sol_3].HWS.mx);
-    const minHWSol_3 = Math.round(marsDataToDeploy[sol_3].HWS.mn);
-    document.getElementById('hw-max-sol3').innerHTML = 
-    (metric)
-    ? `${Math.round(maxHWSol_3)}<span>m/s</span>`
-    : `${Math.round((maxHWSol_3 * 2.37) + 32)}<span>mph</span>`;
-    document.getElementById('hw-min-sol3').innerHTML = 
-    (metric)
-    ? `${Math.round(minHWSol_3)}<span>m/s</span>`
-    : `${Math.round((minHWSol_3 * 2.37) + 32)}<span>mph</span>`
+    const maxHWSol_3 = (marsDataToDeploy[sol_3].HWS) ? Math.round(marsDataToDeploy[sol_3].HWS.mx) : 'N/A';
+    const minHWSol_3 = (marsDataToDeploy[sol_3].HWS) ? Math.round(marsDataToDeploy[sol_3].HWS.mn) : 'N/A';
+    if (typeof(maxHWSol_3) === 'number') {
+      document.getElementById('hw-max-sol3').innerHTML = 
+      (metric)
+      ? `${Math.round(maxHWSol_3)}<span>m/s</span>`
+      : `${Math.round((maxHWSol_3 * 2.37) + 32)}<span>mph</span>`;
+    } else {
+      document.getElementById('hw-max-sol3').innerHTML = maxHWSol_3;
+    }
+    if (typeof(minHWSol_3) === 'number') {
+      document.getElementById('hw-min-sol3').innerHTML = 
+      (metric)
+      ? `${Math.round(minHWSol_3)}<span>m/s</span>`
+      : `${Math.round((minHWSol_3 * 2.37) + 32)}<span>mph</span>`
+    } else {
+      document.getElementById('hw-min-sol3').innerHTML = minHWSol_3;
+    }
     //wind direction
-    const directionWDSol_3 = marsDataToDeploy[sol_3].WD.most_common.compass_point;
+    const directionWDSol_3 = (marsDataToDeploy[sol_3].WD.most_common) ? marsDataToDeploy[sol_3].WD.most_common.compass_point : 'N/A';
     document.getElementById('wd-sol3').innerHTML = directionWDSol_3;
+
+
     //Sol 4 flipping card
     //surface temperature
-    const highSol_4 = Math.round(marsDataToDeploy[sol_4].AT.mx);
-    const lowSol_4 = Math.round(marsDataToDeploy[sol_4].AT.mn);
+    const highSol_4 = Math.round(marsDataToDeploy[sol_4].AT.mx); //TEMP is always available because of previous check
+    const lowSol_4 = Math.round(marsDataToDeploy[sol_4].AT.mn); //TEMP is always available because of previous check
     document.getElementById('at-high-sol4').innerHTML = 
     (metric)
     ? `${Math.round(highSol_4)}<span>C</span>`
@@ -441,28 +495,45 @@ function updateMarsWeather() {
     ? `${Math.round(lowSol_4)}<span>C</span>`
     : `${Math.round((lowSol_4 * 1.8) + 32)}<span>F</span>`
     //surface preasure
-    const maxPRSol_4 = Math.round(marsDataToDeploy[sol_4].PRE.mx);
-    const minPRSol_4 = Math.round(marsDataToDeploy[sol_4].PRE.mn);
-    document.getElementById('pr-max-sol4').innerHTML = `${Math.round(maxPRSol_4)}<span>Pa</span>`;
-    document.getElementById('pr-min-sol4').innerHTML = `${Math.round(minPRSol_4)}<span>Pa</span>`;
+    const maxPRSol_4 = (marsDataToDeploy[sol_4].PRE) ? Math.round(marsDataToDeploy[sol_4].PRE.mx) : 'N/A';
+    const minPRSol_4 = (marsDataToDeploy[sol_4].PRE) ? Math.round(marsDataToDeploy[sol_4].PRE.mn) : 'N/A';
+    if(typeof(maxPRSol_4) === 'number') {
+      document.getElementById('pr-max-sol4').innerHTML = `${Math.round(maxPRSol_4)}<span>Pa</span>`;
+    } else{
+      document.getElementById('pr-max-sol4').innerHTML = maxPRSol_4;
+    }
+    if(typeof(minPRSol_4) === 'number') {
+      document.getElementById('pr-min-sol4').innerHTML = `${Math.round(minPRSol_4)}<span>Pa</span>`;
+    } else {
+      document.getElementById('pr-min-sol4').innerHTML = minPRSol_4;
+    }
     //horizontal wind
-    const maxHWSol_4 = Math.round(marsDataToDeploy[sol_4].HWS.mx);
-    const minHWSol_4 = Math.round(marsDataToDeploy[sol_4].HWS.mn);
-    document.getElementById('hw-max-sol4').innerHTML = 
-    (metric)
-    ? `${Math.round(maxHWSol_4)}<span>m/s</span>`
-    : `${Math.round((maxHWSol_4 * 2.37) + 32)}<span>mph</span>`;
-    document.getElementById('hw-min-sol4').innerHTML = 
-    (metric)
-    ? `${Math.round(minHWSol_4)}<span>m/s</span>`
-    : `${Math.round((minHWSol_4 * 2.37) + 32)}<span>mph</span>`
+    const maxHWSol_4 = (marsDataToDeploy[sol_4].HWS) ? Math.round(marsDataToDeploy[sol_4].HWS.mx) : 'N/A';
+    const minHWSol_4 = (marsDataToDeploy[sol_4].HWS) ? Math.round(marsDataToDeploy[sol_4].HWS.mn) : 'N/A';
+    if (typeof(maxHWSol_4) === 'number') {
+      document.getElementById('hw-max-sol4').innerHTML = 
+      (metric)
+      ? `${Math.round(maxHWSol_4)}<span>m/s</span>`
+      : `${Math.round((maxHWSol_4 * 2.37) + 32)}<span>mph</span>`;
+    } else {
+      document.getElementById('hw-max-sol4').innerHTML = maxHWSol_4;
+    }
+    if (typeof(minHWSol_4) === 'number') {
+      document.getElementById('hw-min-sol4').innerHTML = 
+      (metric)
+      ? `${Math.round(minHWSol_4)}<span>m/s</span>`
+      : `${Math.round((minHWSol_4 * 2.37) + 32)}<span>mph</span>`
+    } else {
+      document.getElementById('hw-min-sol4').innerHTML = minHWSol_4;
+    }
     //wind direction
-    const directionWDSol_4 = marsDataToDeploy[sol_4].WD.most_common.compass_point;
+    const directionWDSol_4 = (marsDataToDeploy[sol_4].WD.most_common) ? marsDataToDeploy[sol_4].WD.most_common.compass_point : 'N/A';
     document.getElementById('wd-sol4').innerHTML = directionWDSol_4;
     flipMarsCards();
     //bottom note
     const date = new Date(localStorage.latestMarsCheck);
     note.innerHTML = `<p>Updated: ${getShortDate(date)}
+    <p>*N/A this data is not available right now.
     <p>
     <p>There is a weather station on Mars!!
     <p>This App shows the last 4 Sols (Martian days) with available temperature data.
@@ -1099,8 +1170,6 @@ function getWindDirection(degrees) {
 * @param {object} modal - MouseEvent
 */
 function closeModal(modal) {
-  console.log(typeof(modal));
-  console.log(modal);
   modal = modalWindCompass.parentElement;
   modal.classList.remove('open');
 }
