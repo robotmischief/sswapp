@@ -828,6 +828,7 @@ function deployEarthUIwithData(){
                     <p>Updated: ${getShortDate(date)}
                     <p>
                     <p>Earth weather forecast data thanks to Open Weather
+                    <p>Moon phase as seen from southern hemisphere
                     <p>* numbers rounded up at geek, not nerd, level.`;
 }
 
