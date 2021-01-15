@@ -3,12 +3,674 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="main.js"></script>
-    <title>Document</title>
+    <meta name="description" content="Solar System Weather Application (SSWAPP). Weather forecast for the space traveller.">
+
+    <meta name="author" content="robotmischief">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="msapplication-TileColor" content="#2f2c52">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#2f2c52">
+
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/tweenMax.min.js"></script>
+    <script src="./js/plotly-latest.min.js"></script>
+    <script defer src="./js/main.js"></script>
+
+    <title>SSWAPP</title>
   </head>
   <body>
-    <h1>Hi there from heroku!</h1>
-    <button id="btn">get data</button>
-    <div id="data"></div>
+    <main class="main-container">
+      <!-- Loading Content -->
+      <section class="loading-container show">
+        <div class="container-header">
+          <div class="title"><h1>sswapp</h1></div>
+          <div class="location">
+            <div class="place">
+              <h3>solar system weather app</h3>
+            </div>
+          </div>
+        </div>
+        <div class="planets-header">
+          <div class="stars"></div>
+          <div class="planet"><img src="./images/sun.svg" alt="sun" /></div>
+        </div>
+        <div class="output-text">
+          <h3 id="text-title">Starting Data Download</h3>
+          <h2 id="text-info">searching for planets downlinks...</h2>
+        </div>
+        <div class="planets-loading-container">
+          <div id="mercury-load" class="planet-bar-container">
+            <img src="./images/planet_mercury.svg" alt="mercury"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+          <div id="venus-load" class="planet-bar-container">
+            <img src="./images/planet_venus.svg" alt="venus"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+          <div id="earth-load" class="planet-bar-container">
+            <img src="./images/planet_earth.svg" alt="earth"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+          <div id="mars-load" class="planet-bar-container">
+            <img src="./images/planet_mars.svg" alt="mars"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+          <div id="jupiter-load" class="planet-bar-container">
+            <img src="./images/planet_jupiter.svg" alt="jupiter"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+          <div id="saturn-load" class="planet-bar-container">
+            <img src="./images/planet_saturn.svg" alt="saturn"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+          <div id="uranus-load" class="planet-bar-container">
+            <img src="./images/planet_uranus.svg" alt="uranus"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+          <div id="neptune-load" class="planet-bar-container">
+            <img src="./images/planet_neptune.svg" alt="neptune"/>
+            <div class="vert-bar-container"><span class="vert-bar"></span></div>
+            <div class="circle-dot"></div>
+          </div>
+        </div>
+      </section><!-- end loading planets -->
+
+      <!-- Generic Planet Content -->
+      <section class="generic-planet-container hide">
+        <div class="container-header">
+          <div class="title"><h1>Planet Name</h1></div>
+          <div class="location">
+            <div class="place">
+              <h2>Planet Category</h2>
+              <h3>weather station not available</h3>
+            </div>
+          </div>
+        </div>
+        <div class="planets-header">
+          <div class="stars"></div>
+          <div class="commets"></div>
+          <div class="planet">
+            <img src="./images/planet_saturn.svg" alt="planet image" />
+          </div>
+        </div>
+        <section class="generic-planet-container">
+          <section class="temperature">
+            <img src="./images/icon_temperature.svg" alt="temprature" />
+            <div class="max-min-values">
+              <div class="avtemp">-12.2<span>C</span></div>
+              <div class="avtext">average temperature</div>
+            </div>
+          </section>
+          <!-- data grid -->
+          <section class="grid-card">
+            <section class="surface-gravity">
+              <div class="text-large">
+                3.7<span class="unit">m/s<sup>2</sup></span>
+              </div>
+              <div class="text-small">surface gravity</div>
+            </section>
+
+            <section class="body-weight">
+              <div class="text-large">180<span class="unit">kgs</span></div>
+              <div class="text-small">your body weight</div>
+            </section>
+
+            <section class="distance-sun">
+              <div class="text-large">
+                58000000<span class="unit">kms</span>
+              </div>
+              <div class="text-small">distance from the Sun</div>
+            </section>
+
+            <section class="day-duration">
+              <div class="text-large">176<span class="unit">Earth days</span></div>
+              <div class="text-small">day duration<span>*</span></div>
+            </section>
+
+            <section class="year-duration">
+              <div class="text-large">88<span class="unit">Earth years</span></div>
+              <div class="text-small">year duration<span>*</span></div>
+            </section>
+
+            <section class="travel-time">
+              <div class="text-large">
+                3.2<span class="unit">minutes at light speed</span>
+              </div>
+              <div class="text-small">travel time from the Sun</div>
+            </section>
+          </section>
+        </section>
+      </section><!-- end Generic Planet Content -->
+
+      <!-- Earth Planet Content -->
+      <section class="earth-container hide">
+        <div class="container-header">
+          <div class="title"><h1>Earth</h1></div>
+          <div class="location">
+            <img src="./images/icon_location.svg" alt="location" />
+            <div class="place">
+              <h2>Your Location</h2>
+              <h3>Summer</h3>
+            </div>
+          </div>
+        </div>
+        <!-- Earth Planet + stars + commets -->
+        <div class="planets-header">
+          <div class="stars"></div>
+          <div class="commets"></div>
+          <div class="planet">
+            <img src="./images/planet_earth.svg" alt="planet earth" />
+          </div>
+        </div>
+        <!-- latest weather available -->
+        <section class="container-last-day">
+          <h1>Day name</h1>
+          <h2>Month DD, YYYY</h2>
+          <section class="mars-grid-last-day">
+            <!-- temperature -->
+            <div class="grid-left-col">
+              <section class="temperature">
+                <img src="./images/icon_temperature.svg" alt="temperature" />
+                <div class="max-min">
+                  <h3>HIGH</h3>
+                  <h3>LOW</h3>
+                </div>
+              </section>
+             </div>
+            <div class="grid-line"></div>
+            <div class="grid-right-col">
+              <section class="temperature"></section>
+                <div class="max-min-values">
+                  <h3 id='temp-today-mx'>-12.2<span>C</span></h3>
+                  <h4 id='temp-today-mn'>-96.3<span>C</span></h4>
+                </div>
+            </div>
+        <!-- pressure -->
+        <div class="grid-left-col">
+          <section class="pressure">
+            <img src="./images/icon_pressure.svg" alt="pressure" />
+            <div class="max-min">
+              <h3>MAX</h3>
+            </div>
+          </section>
+        </div>
+        <div class="grid-line"></div>
+        <div class="grid-right-col">
+          <section class="pressure">
+            <div class="max-min-values">
+              <h3 id='pr-today-mx'>760.9<span>Pa</span></h3>
+            </div>
+          </section>
+        </div>
+        <!-- wind -->
+        <div class="grid-left-col">
+          <section class="wind">
+            <img src="./images/icon_wind.svg" alt="wind" />
+            <div class="max-min">
+              <h3>MAX</h3>
+            </div>
+          </section>
+        </div>
+        <div class="grid-line"></div>
+        <div class="grid-right-col">
+          <section class="wind">
+            <div class="max-min-values">
+              <h3 id='wd-today-mx'>5.7<span>m/s</span></h3>
+              <h4 id='wd-today-dir'>0.2</h4>
+            </div>
+            <img id="today-moon" class="phobos" src="./images/moon_new.svg" alt="moon"/>
+          </section>
+        </div>
+        </section>
+      </section><!-- end latest forecast -->
+
+    <!-- Earth 3 day forecast available -->
+          <section class="container-forecast">
+            <section class="day" id="one-earth">
+              <div class="front">
+                <section id='day1-day' class="sol">Tue</section>
+                <section class="temperature">
+                  <img src="./images/icon_temperature.svg" alt="temperature" />
+                  <div class="max-min-values">
+                    <h3 id ='temp-day1-mx'>-14.6<span>C</span></h3>
+                    <h4 id ='temp-day1-mn'>-96.4<span>C</span></h4>
+                  </div>
+                </section>
+                <section class="moons">
+                  <img id="day1-moon" class="phobos" src="./images/moon_new.svg" alt="moon"/>
+                </section>
+              </div>
+            </section>
+
+            <section class="day" id="two-earth">
+              <div class="front">
+                <section id='day2-day'class="sol">Wed</section>
+                <section class="temperature">
+                  <img src="./images/icon_temperature.svg" alt="" />
+                  <div class="max-min-values">
+                    <h3 id ='temp-day2-mx'>-9.9<span>C</span></h3>
+                    <h4 id ='temp-day2-mn'>-97.8<span>C</span></h4>
+                  </div>
+                </section>
+
+                <section class="moons">
+                  <img id="day2-moon" class="phobos" src="./images/moon_waxing_crescent.svg" alt="moon" />
+                </section>
+              </div>
+            </section>
+
+            <section class="day" id="three-earth">
+              <div class="front">
+                <section id='day3-day' class="sol">Thu</section>
+                <section class="temperature">
+                  <img src="./images/icon_temperature.svg" alt="temperature" />
+                  <div class="max-min-values">
+                    <h3 id ='temp-day3-mx'>-12.2<span>C</span></h3>
+                    <h4 id ='temp-day3-mn'>-96.3<span>C</span></h4>
+                  </div>
+                </section>
+
+                <section class="moons">
+                  <img id="day3-moon" class="phobos" src="./images/moon_full.svg" alt="moon"/>
+                </section>
+              </div>
+            </section>
+          </section>
+        </section>
+      </section><!-- end Earth Planet Content -->
+
+      <!-- Mars Planet Content -->
+      <section class="mars-container hide">
+        <div class="container-header">
+          <div class="title"><h1>MARS</h1></div>
+          <div class="location">
+            <img src="./images/icon_location.svg" alt="location" />
+            <div class="place">
+              <h2>Elysium Planitia</h2>
+              <h3 id="season">Season</h3>
+            </div>
+          </div>
+        </div>
+        <!-- Mars Planet + stars + commets -->
+        <div class="planets-header">
+          <div class="stars"></div>
+          <div class="commets"></div>
+          <div class="planet">
+            <img src="./images/planet_mars.svg" alt="planet mars" />
+          </div>
+        </div>
+        <!-- latest weather available -->
+        <section class="container-last-day">
+          <!-- header data -->
+          <h1 id="sol-1">Sol 701</h1>
+          <h2 id="date">Month DD, YYYY</h2>
+          <!-- forecast -->
+          <section class="mars-grid-last-day">
+            <!-- temperature -->
+            <div class="grid-left-col">
+              <section class="temperature">
+                <img src="./images/icon_temperature.svg" alt="temperature" />
+                <div class="max-min">
+                  <h3>HIGH</h3>
+                  <h3>LOW</h3>
+                </div>
+              </section>
+            </div>
+            <div class="grid-line"></div>
+            <div class="grid-right-col">
+              <section class="temperature">
+                <div class="max-min-values">
+                  <h3 id="at-high-sol1">-12.2<span>C</span></h3>
+                  <h4 id="at-low-sol1">-96.4<span>C</span></h4>
+                </div>
+              </section>
+            </div>
+            <!-- pressure -->
+            <div class="grid-left-col">
+              <section class="pressure">
+                <img src="./images/icon_pressure.svg" alt="pressure" />
+                <div class="max-min">
+                  <h3>MAX</h3>
+                  <h3>MIN</h3>
+                </div>
+              </section>
+            </div>
+            <div class="grid-line"></div>
+            <div class="grid-right-col">
+              <section class="pressure">
+                <div class="max-min-values">
+                  <h3 id="pr-max-sol1">760.9<span>Pa</span></h3>
+                  <h4 id="pr-min-sol1">708.7<span>Pa</span></h4>
+                </div>
+              </section>
+            </div>
+            <!-- wind -->
+            <div class="grid-left-col">
+              <section class="wind">
+                <img src="./images/icon_wind.svg" alt="wind" />
+                <div class="max-min">
+                  <h3>MAX</h3>
+                  <h3>MIN</h3>
+                </div>
+              </section>
+            </div>
+            <div class="grid-line"></div>
+            <div class="grid-right-col">
+              <section class="wind">
+                <div class="max-min-values">
+                  <h3 id="hw-max-sol1">5.7<span>m/s</span></h3>
+                  <h4 id="hw-min-sol1">0.2<span>m/s</span></h4>
+                </div>
+                <div class="wind-direction">
+                  <h3 id="wd-sol1">WWW</h3>
+                  <h4>+INFO</h4>
+                </div>
+              </section>
+            </div>
+          </section>
+        </section><!-- end Mars latest forecast available -->
+
+        <!-- Mars latest three day forecast -->
+        <section class="container-forecast">
+          <section class="day" id="three">
+            <div class="front">
+              <div id="sol-4" class="sol">Sol 698</div>
+              <section class="temperature">
+                <img src="./images/icon_temperature.svg" alt="temperature" />
+                <div class="max-min-values">
+                  <h3 id="at-high-sol4">-14.6<span>C</span></h3>
+                  <h4 id="at-low-sol4">-96.4<span>C</span></h4>
+                </div>
+              </section>
+              <section class="pressure">
+                <img src="./images/icon_pressure.svg" alt="pressure" />
+                <div class="max-min-values">
+                  <h3 id="pr-max-sol4">757.1<span>Pa</span></h3>
+                  <h4 id="pr-min-sol4">708.1<span>Pa</span></h4>
+                </div>
+              </section>
+              <section class="moons">
+                <img
+                  class="phobos"
+                  src="./images/phobosgiff.gif"
+                  alt="phobos new moon"
+                />
+                <img
+                  class="deimos"
+                  src="./images/deimosgiff.gif"
+                  alt="deimos new moon"
+                />
+              </section>
+            </div>
+
+            <div class="back rotate">
+              <section class="wind">
+                <img src="./images/icon_wind.svg" alt="wind intensity" />
+                <div class="max-min-values">
+                  <h3 id="hw-max-sol4">5.7<span>m/s</span></h3>
+                  <h4 id="hw-min-sol4">0.2<span>m/s</span></h4>
+                </div>
+              </section>
+              <section class="compass">
+                <img src="./images/icon_compass.svg" alt="wind direction" />
+                <div class="max-min-values">
+                  <h3 id="wd-sol4">WNW</h3>
+                  <h4>+INFO</h4>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section class="day" id="two">
+            <div class="front">
+              <section id="sol-3" class="sol">Sol 699</section>
+              <section class="temperature">
+                <img src="./images/icon_temperature.svg" alt="temperature" />
+                <div class="max-min-values">
+                  <h3 id="at-high-sol3">-9.9<span>C</span></h3>
+                  <h4 id="at-low-sol3">-97.8<span>C</span></h4>
+                </div>
+              </section>
+              <section class="pressure">
+                <img src="./images/icon_pressure.svg" alt="pressure" />
+                <div class="max-min-values">
+                  <h3 id="pr-max-sol3">753.6<span>Pa</span></h3>
+                  <h4 id="pr-min-sol3">705.2<span>Pa</span></h4>
+                </div>
+              </section>
+              <section class="moons">
+                <img
+                  class="phobos"
+                  src="./images/phobosgiff.gif"
+                  alt="phobos new moon"
+                />
+                <img
+                  class="deimos"
+                  src="./images/deimosgiff.gif"
+                  alt="deimos new moon"
+                />
+              </section>
+            </div>
+
+            <div class="back rotate">
+              <section class="wind">
+                <img src="./images/icon_wind.svg" alt="wind intensity" />
+                <div class="max-min-values">
+                  <h3 id="hw-max-sol3">5.7<span>m/s</span></h3>
+                  <h4 id="hw-min-sol3">0.2<span>m/s</span></h4>
+                </div>
+              </section>
+              <section class="compass">
+                <img src="./images/icon_compass.svg" alt="wind direction" />
+                <div class="max-min-values">
+                  <h3 id="wd-sol3">WNW</h3>
+                  <h4>+INFO</h4>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section class="day" id="one">
+            <div class="front">
+              <section id="sol-2" class="sol">Sol 700</section>
+              <section class="temperature">
+                <img src="./images/icon_temperature.svg" alt="temperature" />
+                <div class="max-min-values">
+                  <h3 id="at-high-sol2">-12.2<span>C</span></h3>
+                  <h4 id="at-low-sol2">-96.3<span>C</span></h4>
+                </div>
+              </section>
+              <section class="pressure">
+                <img src="./images/icon_pressure.svg" alt="pressure" />
+                <div class="max-min-values">
+                  <h3 id="pr-max-sol2">760.9<span>Pa</span></h3>
+                  <h4 id="pr-min-sol2">708.7<span>Pa</span></h4>
+                </div>
+              </section>
+              <section class="moons">
+                <img
+                  class="phobos"
+                  src="./images/phobosgiff.gif"
+                  alt="phobos new moon"
+                />
+                <img
+                  class="deimos"
+                  src="./images/deimosgiff.gif"
+                  alt="deimos new moon"
+                />
+              </section>
+            </div>
+
+            <div class="back rotate">
+              <section class="wind">
+                <img src="./images/icon_wind.svg" alt="wind intensity" />
+                <div class="max-min-values">
+                  <h3 id="hw-max-sol2">5.7<span>m/s</span></h3>
+                  <h4 id="hw-min-sol2">0.2<span>m/s</span></h4>
+                </div>
+              </section>
+              <section class="compass">
+                <img src="./images/icon_compass.svg" alt="wind direction" />
+                <div class="max-min-values">
+                  <h3 id="wd-sol2">WNW</h3>
+                  <h4>+INFO</h4>
+                </div>
+              </section>
+            </div>
+          </section>
+        </section>
+
+        <div class="center modal" id="modal">
+          <div class="modal-content">
+            <h1>Wind Compass</h1>
+            <h1 id="sol-wd">for Sol 7000</h1>
+            <div class="wind-graph"></div>
+          </div>
+        </div>
+      </section><!-- end mars planet content -->
+
+      <!-- preferences content -->
+      <section class="preferences-container hide">
+        <div class="container-header">
+          <div class="title"><h1>Prefs</h1></div>
+          <div class="location">
+            <div class="place">
+              <h3>+ Attributions</h3>
+            </div>
+          </div>
+        </div>
+
+        <form id='prefs'>
+          <section class="profile">
+            <img src="./images/profile_astro.svg" alt="profile avatar" />
+            <input type="text" class="input profile-name" value="@astro" />
+          </section>
+
+          <section class="units">
+            <label for="celsius">Celsius
+              <input type="radio" id="celsius" name="units" value="C" />
+              <span class="radial-check"></span>
+            </label>
+            <label for="fahrenheit">Fahrenheit
+              <input
+                type="radio"
+                id="fahrenheit"
+                name="units"
+                value="F"
+                checked />
+              <span class="radial-check"></span>
+            </label>
+          </section>
+
+          <section class="earth-weight">
+            <label for="weight">Your weight on Earth</label>
+            <div class="weight-container">
+              <input type="text" id="weight" value="100" /><span
+                ><h2>Kgs</h2></span>
+            </div>
+          </section>
+
+          <section class="earth-weather">
+            <label for="place">Place for Earth weather</label>
+            <div class="earth-container">
+              <input type="text" id="place" value="Space Coast, FL" />
+            </div>
+          </section>
+          <button id='save' type="button" class="save green">SAVED</button>
+        </form>
+
+        <section class="attributions">
+          <h2>Attributions</h2>
+          <h3>Mars Data</h3>
+          <p>NASA’s InSight Mars lander takes continuous weather measurements (temperature, wind, pressure) on the surface of Mars from the Elysium Planitia; a flat, smooth plain near Mars’ equator.</p>
+          <p>To learn much more about this mission check <a href="https://mars.nasa.gov/insight/timeline/overview/" target="_blank">this link</a></p>
+          <p>This App shows weather data for the latest 4 Sols (Martian days) with available temperature data. Since data travels from Mars to Earth sometimes it is incomplete or unavailable. When more data from a particular Sol is downlinked (sometimes several days later), these values are recalculated and get updated.</p>
+          <p>The InSight Mars Mission data is provided by the NASA Jet Propulsion Laboratory and Cornell University API.</p>
+          <h3>Planetary Data</h3>
+          <p>Planetary information thanks to NASA’s Solar System Website: go and check it out to learn tons of cool stuff about our <a href=" https://solarsystem.nasa.gov/planets/overview/#otp_planet_lineup"  target="_blank">solar system</a></p>       
+          <h3>Earth Data</h3>
+          <p>Earth weather forecast data thanks to Open Weather API. Go and check them out at <a href="https://www.openweathermap.org"  target="_blank">Open Weather Map</a></p>        
+          <h3>Web Service Rate Limits</h3>
+          <p>As all these cool APIs are free to use, limits are placed on the number of requests you can make. To keep these requests as low as possible, SSWAPP updates weather data on a daily basis.</p>
+          <h3>Scripts</h3>
+          <p>Learned to use Plotly thanks to <a href="https://twitter.com/ellotheth" target="_blank">Gemma Anible's</a> && <a href="https://twitter.com/sirclicksalot" target="_blank">Brian Carcich's</a> script</p>
+          <h3>Artwork</h3>
+          <p>Friendly Astronaut</p><p><a href="http://www.freepik.com" target="_blank">Designed by catalyststuff / Freepik</a></p>
+          <p>Cool Planets</p><p><a href="http://www.freepik.com" target="_blank">Designed by macrovector / Freepik</a></p>
+          <p>Icons made by <a href="http://www.freepik.com/"  target="_blank" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"  target="_blank" title="Flaticon"> www.flaticon.com</a></p>
+        </section>
+      </section><!-- end preferences content -->
+
+      <div class="note hide"></div>
+
+    </main><!-- end main-container -->
+
+    <!-- Navigation -->
+    <nav>
+      <div class="elastic-wave">
+        <svg><path id="start"
+            d="M80,1290H0V0H80C244,334-39,523,80,1290Z"
+            fill="#EF8618"
+            preserveAspectRatio="none" />
+        </svg>
+      </div>
+      <nav class="nav-bar">
+        <ul class="nav-list-planets">
+          <li id="mercury">
+            <img src="./images/icon_mercury.svg" alt="Mercury" />
+            <span class="tooltip-planets" data-text="Mercury"></span>
+          </li>
+          <li id="venus">
+            <img src="./images/icon_venus.svg" alt="Venus" />
+            <span class="tooltip-planets" data-text="Venus"></span>
+          </li>
+          <li id="earth">
+            <img src="./images/icon_earth.svg" alt="Earth" />
+            <span class="tooltip-planets" data-text="Earth"></span>
+          </li>
+          <li id="mars">
+            <img src="./images/icon_mars.svg" alt="Mars" />
+            <span class="tooltip-planets active" data-text="Mars"></span>
+          </li>
+          <li id="jupiter">
+            <img src="./images/icon_jupiter.svg" alt="Jupiter" />
+            <span class="tooltip-planets" data-text="Jupiter"></span>
+          </li>
+          <li id="saturn">
+            <img src="./images/icon_saturn.svg" alt="Saturn" />
+            <span class="tooltip-planets" data-text="Saturn"></span>
+          </li>
+          <li id="uranus">
+            <img src="./images/icon_uranus.svg" alt="Uranus" />
+            <span class="tooltip-planets" data-text="Uranus"></span>
+          </li>
+          <li id="neptune">
+            <img src="./images/icon_neptune.svg" alt="Neptune" />
+            <span class="tooltip-planets" data-text="Neptune"></span>
+          </li>
+          <li id="preferences">
+            <img src="./images/icon_preferences.svg" alt="preferences" />
+            <span class="tooltip-planets" data-text="Preferences"></span>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="fab"><img src="./images/icon_solarsystem.svg" alt="menu"/></div>
+    </nav>
+
+    <div class="notification"><h1></h1><p></p></div><!-- error notification popup -->
+
   </body>
 </html>
