@@ -7,3 +7,9 @@ const port = process.env.PORT  || 3000;
 app.listen(port, () => console.log('listening to port ', port));
 //static content
 app.use(express.static('public'));
+
+//fetch Mars data
+app.get('/mars', (request, response) => {
+    const apiKey = process.env.API_NASA_KEY;
+    response.json(apiKey);
+})
