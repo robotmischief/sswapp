@@ -39,6 +39,9 @@ preferencesStorageInit();
 
 // event listeners
 window.addEventListener('load', (event) => {
+  //serviceworker
+  registerSW();
+  //loading screen
   loadDataSecuence();
 });
 formPrefs.addEventListener('change', setBtnSave);
@@ -1068,6 +1071,16 @@ function handleElasticWave() {
 
 /* utilities */
 
+async function registerSW(){
+  if('serviceWorker' in navigator){
+    try{
+      await navigator.serviceWorker.register("/sw.js");
+    }
+    catch(err){
+      console.log('service worker failed ', err);
+    }
+  }
+}
 /*
 * @description Loads initial JSON default data
 * @param {string} planet - name of JSON to load
