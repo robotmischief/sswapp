@@ -1,5 +1,5 @@
 
-const cacheName = 'sswapp-v1';
+const cacheName = 'sswapp-v1.0.1';
 const staticAssets = [
     '/',
     '/index.html',
@@ -57,6 +57,13 @@ self.addEventListener('install', async (e) => {
 
 self.addEventListener('activate', (e) => {
     self.clients.claim();
+    e.waitUntil(
+        caches.keys().then(keys => {
+            return Promise.all(keys
+                .filter(key => key !== cacheName)
+                .map(key => caches.delete(key)))
+        })
+    );
 });
 
 self.addEventListener('fetch', (e) => {

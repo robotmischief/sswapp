@@ -611,14 +611,15 @@ setTimeout(()=> {
 setTimeout(()=> {
     document.getElementById('two').querySelector('.front').classList.toggle('rotate');
     document.getElementById('two').querySelector('.back').classList.toggle('rotate');
-},1500);
-setTimeout(()=> {
+  },1500);
+  setTimeout(()=> {
     document.getElementById('three').querySelector('.front').classList.toggle('rotate');
     document.getElementById('three').querySelector('.back').classList.toggle('rotate');
-},2000);
-setTimeout(()=> {
+  },2000);
+  setTimeout(()=> {
     document.getElementById('one').querySelector('.front').classList.toggle('rotate');
     document.getElementById('one').querySelector('.back').classList.toggle('rotate');
+    if (fab.classList.contains('open')) handleFABClick(); //close onboarding navigation
 },2500);
 setTimeout(()=> {
     document.getElementById('two').querySelector('.front').classList.toggle('rotate');
