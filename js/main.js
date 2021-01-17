@@ -884,6 +884,9 @@ function handlePlanetClick(e){
   actualPlanet = planet;
   //go top of page for a better UX
   document.querySelector('.main-container').scrollTop = 0;
+
+  //closing nav bar
+  handleFABClick();
 }
 
 /*
