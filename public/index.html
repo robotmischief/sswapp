@@ -20,6 +20,7 @@
     <script src="./js/tweenMax.min.js"></script>
     <script src="./js/plotly-latest.min.js"></script>
     <script defer src="./js/main.js"></script>
+    
 
     <title>SSWAPP</title>
   </head>
@@ -671,5 +672,13 @@
     </nav>
 
     <div class="notification"><h1></h1><p></p></div><!-- error notification popup -->
+    <!-- service worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+      </script>
   </body>
 </html>
