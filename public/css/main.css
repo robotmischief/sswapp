@@ -248,9 +248,6 @@ html {
   width: 60%;
 }
 
-.nav-bar .nav-list-planets li:hover {
-  background-color: var(--bg-navbar-active);
-}
 .nav-bar .nav-list-planets li.active {
   opacity: 0;
   transition: all 2s ease-out;
@@ -771,11 +768,6 @@ html {
   transform: translateY(50%);
 }
 
-.nav-bar .nav-list-planets li:hover .tooltip-planets {
-  transform: translateX(0);
-  opacity: 1;
-}
-
 /* planets without weather station */
 .generic-planet-container {
   display: flex;
@@ -1154,6 +1146,22 @@ button.green {
     left: 50%;
     transform: translate(-50%, 500px);
     opacity: 0;
+  }
+}
+
+/*
+* media queries
+*/
+
+/* desktop screens */
+@media screen and (min-width: 770px) {
+  .nav-bar .nav-list-planets li:hover {
+    background-color: var(--bg-navbar-active);
+  }
+
+  .nav-bar .nav-list-planets li:hover .tooltip-planets {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
