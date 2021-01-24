@@ -1,0 +1,941 @@
+{
+  "708": {
+    "AT": { "av": -62.193, "ct": 186824, "mn": -93.195, "mx": -8.208 },
+    "First_UTC": "2020-11-22T16:18:43Z",
+    "HWS": { "av": 6.01, "ct": 86726, "mn": 0.221, "mx": 20.202 },
+    "Last_UTC": "2020-11-23T16:58:16Z",
+    "PRE": { "av": 733.661, "ct": 134390, "mn": 675.4721, "mx": 769.2211 },
+    "Season": "fall",
+    "WD": {
+      "0": {
+        "compass_degrees": 0,
+        "compass_point": "N",
+        "compass_right": 0,
+        "compass_up": 1,
+        "ct": 1588
+      },
+      "1": {
+        "compass_degrees": 22.5,
+        "compass_point": "NNE",
+        "compass_right": 0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 1686
+      },
+      "2": {
+        "compass_degrees": 45,
+        "compass_point": "NE",
+        "compass_right": 0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 1997
+      },
+      "3": {
+        "compass_degrees": 67.5,
+        "compass_point": "ENE",
+        "compass_right": 0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 1511
+      },
+      "5": {
+        "compass_degrees": 112.5,
+        "compass_point": "ESE",
+        "compass_right": 0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 4022
+      },
+      "6": {
+        "compass_degrees": 135,
+        "compass_point": "SE",
+        "compass_right": 0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 910
+      },
+      "7": {
+        "compass_degrees": 157.5,
+        "compass_point": "SSE",
+        "compass_right": 0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 1646
+      },
+      "8": {
+        "compass_degrees": 180,
+        "compass_point": "S",
+        "compass_right": 0,
+        "compass_up": -1,
+        "ct": 756
+      },
+      "9": {
+        "compass_degrees": 202.5,
+        "compass_point": "SSW",
+        "compass_right": -0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 2247
+      },
+      "10": {
+        "compass_degrees": 225,
+        "compass_point": "SW",
+        "compass_right": -0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 20685
+      },
+      "11": {
+        "compass_degrees": 247.5,
+        "compass_point": "WSW",
+        "compass_right": -0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 4209
+      },
+      "12": {
+        "compass_degrees": 270,
+        "compass_point": "W",
+        "compass_right": -1,
+        "compass_up": 0,
+        "ct": 35413
+      },
+      "13": {
+        "compass_degrees": 292.5,
+        "compass_point": "WNW",
+        "compass_right": -0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 6896
+      },
+      "14": {
+        "compass_degrees": 315,
+        "compass_point": "NW",
+        "compass_right": -0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 2155
+      },
+      "15": {
+        "compass_degrees": 337.5,
+        "compass_point": "NNW",
+        "compass_right": -0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 1005
+      },
+      "most_common": {
+        "compass_degrees": 270,
+        "compass_point": "W",
+        "compass_right": -1,
+        "compass_up": 0,
+        "ct": 35413
+      }
+    }
+  },
+  "709": {
+    "AT": { "av": -62.193, "ct": 186824, "mn": -93.195, "mx": -8.208 },
+    "First_UTC": "2020-11-22T16:18:43Z",
+    "HWS": { "av": 6.01, "ct": 86726, "mn": 0.221, "mx": 20.202 },
+    "Last_UTC": "2020-11-23T16:58:16Z",
+    "PRE": { "av": 733.661, "ct": 134390, "mn": 675.4721, "mx": 769.2211 },
+    "Season": "fall",
+    "WD": {
+      "0": {
+        "compass_degrees": 0,
+        "compass_point": "N",
+        "compass_right": 0,
+        "compass_up": 1,
+        "ct": 1588
+      },
+      "1": {
+        "compass_degrees": 22.5,
+        "compass_point": "NNE",
+        "compass_right": 0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 1686
+      },
+      "2": {
+        "compass_degrees": 45,
+        "compass_point": "NE",
+        "compass_right": 0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 1997
+      },
+      "3": {
+        "compass_degrees": 67.5,
+        "compass_point": "ENE",
+        "compass_right": 0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 1511
+      },
+      "5": {
+        "compass_degrees": 112.5,
+        "compass_point": "ESE",
+        "compass_right": 0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 4022
+      },
+      "6": {
+        "compass_degrees": 135,
+        "compass_point": "SE",
+        "compass_right": 0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 910
+      },
+      "7": {
+        "compass_degrees": 157.5,
+        "compass_point": "SSE",
+        "compass_right": 0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 1646
+      },
+      "8": {
+        "compass_degrees": 180,
+        "compass_point": "S",
+        "compass_right": 0,
+        "compass_up": -1,
+        "ct": 756
+      },
+      "9": {
+        "compass_degrees": 202.5,
+        "compass_point": "SSW",
+        "compass_right": -0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 2247
+      },
+      "10": {
+        "compass_degrees": 225,
+        "compass_point": "SW",
+        "compass_right": -0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 20685
+      },
+      "11": {
+        "compass_degrees": 247.5,
+        "compass_point": "WSW",
+        "compass_right": -0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 4209
+      },
+      "12": {
+        "compass_degrees": 270,
+        "compass_point": "W",
+        "compass_right": -1,
+        "compass_up": 0,
+        "ct": 35413
+      },
+      "13": {
+        "compass_degrees": 292.5,
+        "compass_point": "WNW",
+        "compass_right": -0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 6896
+      },
+      "14": {
+        "compass_degrees": 315,
+        "compass_point": "NW",
+        "compass_right": -0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 2155
+      },
+      "15": {
+        "compass_degrees": 337.5,
+        "compass_point": "NNW",
+        "compass_right": -0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 1005
+      },
+      "most_common": {
+        "compass_degrees": 270,
+        "compass_point": "W",
+        "compass_right": -1,
+        "compass_up": 0,
+        "ct": 35413
+      }
+    }
+  },
+  "755": {
+    "AT": { "av": -56.776, "ct": 134793, "mn": -94.77, "mx": -7.478 },
+    "First_UTC": "2021-01-09T23:19:20Z",
+    "HWS": {
+      "av": 4.064,
+      "ct": 71398,
+      "mn": 0.16399999999999998,
+      "mx": 13.145999999999999
+    },
+    "Last_UTC": "2021-01-10T23:58:54Z",
+    "Season": "winter",
+    "WD": {
+      "0": {
+        "compass_degrees": 0,
+        "compass_point": "N",
+        "compass_right": 0,
+        "compass_up": 1,
+        "ct": 1023
+      },
+      "1": {
+        "compass_degrees": 22.5,
+        "compass_point": "NNE",
+        "compass_right": 0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 1103
+      },
+      "2": {
+        "compass_degrees": 45,
+        "compass_point": "NE",
+        "compass_right": 0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 385
+      },
+      "3": {
+        "compass_degrees": 67.5,
+        "compass_point": "ENE",
+        "compass_right": 0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 1237
+      },
+      "5": {
+        "compass_degrees": 112.5,
+        "compass_point": "ESE",
+        "compass_right": 0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 937
+      },
+      "6": {
+        "compass_degrees": 135,
+        "compass_point": "SE",
+        "compass_right": 0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 368
+      },
+      "7": {
+        "compass_degrees": 157.5,
+        "compass_point": "SSE",
+        "compass_right": 0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 2397
+      },
+      "8": {
+        "compass_degrees": 180,
+        "compass_point": "S",
+        "compass_right": 0,
+        "compass_up": -1,
+        "ct": 3584
+      },
+      "9": {
+        "compass_degrees": 202.5,
+        "compass_point": "SSW",
+        "compass_right": -0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 9084
+      },
+      "10": {
+        "compass_degrees": 225,
+        "compass_point": "SW",
+        "compass_right": -0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 25432
+      },
+      "11": {
+        "compass_degrees": 247.5,
+        "compass_point": "WSW",
+        "compass_right": -0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 5193
+      },
+      "12": {
+        "compass_degrees": 270,
+        "compass_point": "W",
+        "compass_right": -1,
+        "compass_up": 0,
+        "ct": 5175
+      },
+      "13": {
+        "compass_degrees": 292.5,
+        "compass_point": "WNW",
+        "compass_right": -0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 12271
+      },
+      "14": {
+        "compass_degrees": 315,
+        "compass_point": "NW",
+        "compass_right": -0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 2265
+      },
+      "15": {
+        "compass_degrees": 337.5,
+        "compass_point": "NNW",
+        "compass_right": -0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 944
+      },
+      "most_common": {
+        "compass_degrees": 225,
+        "compass_point": "SW",
+        "compass_right": -0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 25432
+      }
+    }
+  },
+  "757": {
+    "AT": { "av": -36.096, "ct": 84202, "mn": -48.744, "mx": -8.092 },
+    "First_UTC": "2021-01-12T00:38:30Z",
+    "HWS": { "av": 4.263, "ct": 79222, "mn": 0.253, "mx": 13.877 },
+    "Last_UTC": "2021-01-13T01:18:05Z",
+    "PRE": { "av": 717.112, "ct": 110247, "mn": 692.6268, "mx": 734.0369 },
+    "Season": "winter",
+    "WD": {
+      "0": {
+        "compass_degrees": 0,
+        "compass_point": "N",
+        "compass_right": 0,
+        "compass_up": 1,
+        "ct": 819
+      },
+      "1": {
+        "compass_degrees": 22.5,
+        "compass_point": "NNE",
+        "compass_right": 0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 933
+      },
+      "2": {
+        "compass_degrees": 45,
+        "compass_point": "NE",
+        "compass_right": 0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 348
+      },
+      "3": {
+        "compass_degrees": 67.5,
+        "compass_point": "ENE",
+        "compass_right": 0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 558
+      },
+      "5": {
+        "compass_degrees": 112.5,
+        "compass_point": "ESE",
+        "compass_right": 0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 265
+      },
+      "6": {
+        "compass_degrees": 135,
+        "compass_point": "SE",
+        "compass_right": 0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 54
+      },
+      "7": {
+        "compass_degrees": 157.5,
+        "compass_point": "SSE",
+        "compass_right": 0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 590
+      },
+      "8": {
+        "compass_degrees": 180,
+        "compass_point": "S",
+        "compass_right": 0,
+        "compass_up": -1,
+        "ct": 2036
+      },
+      "9": {
+        "compass_degrees": 202.5,
+        "compass_point": "SSW",
+        "compass_right": -0.382683432365,
+        "compass_up": -0.923879532511,
+        "ct": 4505
+      },
+      "10": {
+        "compass_degrees": 225,
+        "compass_point": "SW",
+        "compass_right": -0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 38612
+      },
+      "11": {
+        "compass_degrees": 247.5,
+        "compass_point": "WSW",
+        "compass_right": -0.923879532511,
+        "compass_up": -0.382683432365,
+        "ct": 12479
+      },
+      "12": {
+        "compass_degrees": 270,
+        "compass_point": "W",
+        "compass_right": -1,
+        "compass_up": 0,
+        "ct": 11935
+      },
+      "13": {
+        "compass_degrees": 292.5,
+        "compass_point": "WNW",
+        "compass_right": -0.923879532511,
+        "compass_up": 0.382683432365,
+        "ct": 3379
+      },
+      "14": {
+        "compass_degrees": 315,
+        "compass_point": "NW",
+        "compass_right": -0.707106781187,
+        "compass_up": 0.707106781187,
+        "ct": 2038
+      },
+      "15": {
+        "compass_degrees": 337.5,
+        "compass_point": "NNW",
+        "compass_right": -0.382683432365,
+        "compass_up": 0.923879532511,
+        "ct": 671
+      },
+      "most_common": {
+        "compass_degrees": 225,
+        "compass_point": "SW",
+        "compass_right": -0.707106781187,
+        "compass_up": -0.707106781187,
+        "ct": 38612
+      }
+    }
+  },
+  "sol_keys": ["757", "755", "709", "708"],
+  "validity_checks": {
+    "706": {
+      "AT": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "HWS": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "PRE": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "WD": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      }
+    },
+    "707": {
+      "AT": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "HWS": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "PRE": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "WD": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      }
+    },
+    "708": {
+      "AT": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "valid": true
+      },
+      "HWS": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "valid": true
+      },
+      "PRE": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "WD": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "valid": true
+      }
+    },
+    "709": {
+      "AT": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "valid": true
+      },
+      "HWS": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "valid": true
+      },
+      "PRE": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "valid": true
+      },
+      "WD": {
+        "sol_hours_with_data": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "valid": true
+      }
+    },
+    "sol_hours_required": 18,
+    "sols_checked": ["706", "707", "708", "709"]
+  }
+}
