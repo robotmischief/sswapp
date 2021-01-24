@@ -162,6 +162,7 @@ html {
 }
 
 .elastic-wave {
+  opacity: 0;
   position: fixed;
   top: 0;
   width: 72px;

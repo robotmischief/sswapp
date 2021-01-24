@@ -2,7 +2,8 @@
 const fab = document.querySelector('.fab');
 const navBar = document.querySelector('.nav-bar');
 const elasticWave = document.querySelector('.elastic-wave');
-const timeLine = new TimelineMax(); // nav bar animation using tweenMax library
+// const timeLine = new TimelineMax(); // nav bar animation using tweenMax library
+let timeLine = undefined; // nav bar animation using tweenMax library
 const navListPlanets = document.querySelectorAll('.nav-list-planets li');
 const pathPlanet = 8; // used to detect planet name when clicking on nav bar 
 let actualPlanet = 'welcomeScreen'; // tracks content being show 
@@ -1037,6 +1038,8 @@ function loadDataSecuence() {
     setTimeout(function () {
       title.innerHTML = 'Alderaan';
       info.innerHTML = '404 NOT FOUND';
+      timeLine = new TimelineMax();
+      initNavBarAnim();
     }, 7000);
     //going to Mars screen
     setTimeout(function () {
@@ -1052,17 +1055,20 @@ function loadDataSecuence() {
     }, 10000);
 }
 
-//set the nav bar background animation (uses tweenMax library)
-timeLine.from('path#start', 1, {
-  ease: Expo.easeInOut
-})
-timeLine.to('path#start', 3, {
-  attr: {
-      d:'M80,1290H0V0H80C28,523,282,529,80,1290Z',
-      d:'M80,1290H0V0H80C82,25,82,1236,80,1290Z',
-  },
-  ease: Elastic.easeOut
-}, '-=1')
+function initNavBarAnim() {
+  //set the nav bar background animation (uses tweenMax library)
+  elasticWave.style.opacity = 1;
+  timeLine.from('path#start', 1, {
+    ease: Expo.easeInOut
+  })
+  timeLine.to('path#start', 3, {
+    attr: {
+        d:'M80,1290H0V0H80C28,523,282,529,80,1290Z',
+        d:'M80,1290H0V0H80C82,25,82,1236,80,1290Z',
+    },
+    ease: Elastic.easeOut
+  }, '-=1')
+}
 
 /*
 * @description Restarts navigation bar's background animation
