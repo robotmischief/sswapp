@@ -612,6 +612,8 @@ setTimeout(()=> {
 setTimeout(()=> {
     document.getElementById('one').querySelector('.front').classList.toggle('rotate');
     document.getElementById('one').querySelector('.back').classList.toggle('rotate');
+    if (fab.classList.contains('open')) handleFABClick(); //close onboarding navigation
+
 },2500);
 setTimeout(()=> {
     document.getElementById('two').querySelector('.front').classList.toggle('rotate');
@@ -876,6 +878,7 @@ function handlePlanetClick(e){
   actualPlanet = planet;
   //go top of page for a better UX
   document.querySelector('.main-container').scrollTop = 0;
+  if (fab.classList.contains('open')) handleFABClick(); //close onboarding navigation
 }
 
 /*
