@@ -16,7 +16,7 @@ To learn much more about this cool mission check [this link](https://mars.nasa.g
 
 This App shows weather data for the latest 4 Sols (Martian days) _with available temperature data_. Since data travels from Mars to Earth sometimes it is incomplete or unavailable. When more data from a particular Sol is downlinked (sometimes several days later), these values are recalculated and get updated.
 
-The InSight Mars Mission data is provided by the NASA Jet Propulsion Laboratory and Cornell University API.<br>
+The InSight Mars Mission data is provided by the NASA Jet Propulsion Laboratory and Cornell University API.<br><br>
 UPDATE: InSight has temporarily suspended daily temperature measurements. Until more data becomes available, it will appear the weather for January 11, 2021
 
 ![mars screen](public/images/readme/mars.png)
