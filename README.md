@@ -44,4 +44,3 @@ Planetary information thanks to NASA’s Solar System Website: go and check it o
 ---
 ## Web Service Rate Limits
 As all these awesome APIs are free to use, limits are placed on the number of requests you can make. To keep these requests as low as possible, SSWAPP updates weather data on a daily basis.
-
