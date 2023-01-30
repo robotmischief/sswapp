@@ -4,6 +4,8 @@
 
 Weather Forecast for the Space Traveler
 
+If you want to know more about the UX design process please follow [this link](https://www.behance.net/gallery/111282185/Solar-System-Weather-App)
+
 ![sswapp loading](public/images/readme/loading.png)
 
 ---
@@ -29,7 +31,7 @@ Earth weather forecast data thanks to Open Weather API. Go and check them out at
 
 ![earth screen](public/images/readme/earth.png)
 
-### :point_up_2: Changing Earth location
+### Changing Earth location
 
 Click the _preferences_ button to select a different place to get its weather.
 
@@ -59,3 +61,10 @@ Planetary information thanks to NASA’s Solar System Website: go and check it o
 ## Web Service Rate Limits
 
 As all these awesome APIs are free to use, limits are placed on the number of requests you can make. To keep these requests as low as possible, SSWAPP updates weather data on a daily basis.
+
+---
+
+## Atributions
+Firendly Astronaut designed by catalystuff www.freepik.com
+
+Cool Planets designed by macrovector www.freepik.com
