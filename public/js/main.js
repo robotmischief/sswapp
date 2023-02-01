@@ -1010,7 +1010,6 @@ function deployEarthUIwithData() {
 function handlePlanetClick(e) {
   const planetLength = e.composedPath().length - pathPlanet;
   const planet = e.composedPath()[planetLength].id;
-  // const planet = e.path[e.path.length - pathPlanet].id;
 
   if (actualPlanet === planet) return; //clicked on same planet, no need to go on
   //update highlighted navbar button

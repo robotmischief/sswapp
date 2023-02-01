@@ -1,5 +1,4 @@
 //initial setup
-const { request, response } = require("express");
 const express = require("express");
 const fetch = require("node-fetch");
 require("dotenv").config();
